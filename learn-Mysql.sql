@@ -16,3 +16,5 @@ CREATE TABLES employees (
 DESCRIBE employees; /* OR */ DESC employees;
 
 INSERT INTO employees VALUES (101, 'Rahul', 45000.45), (102, 'Sonia', 55000.55), (103, 'Priya', 65000.65);
+
+SELECT * FROM employees;
