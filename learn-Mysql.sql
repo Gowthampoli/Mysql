@@ -95,3 +95,73 @@ INSERT INTO orders (order_id,detailes,Amount,customer_id) VALUES (1003,'Lenovo L
 UPDATE orders SET Status='inprogress' WHERE ORDER_ID=1003;
 UPDATE orders SET Status='inprogress' WHERE ORDER_ID=1005;
 UPDATE orders SET Status='inprogress' WHERE ORDER_ID=1007;
+
+=====================================
+class5
+SELECT Name,Gender FROM customer;
+SELECT customer_id as eid,Name as eid,LOCATION AS Location FROM customer;
+SELECT * FROM customer,orders;
+SELECT * FROM customer WHERE location ="Mumbai";
+SELECT *FROM customer WHERE amount<1000;
+
+-----------------------
+ASSINMENT
+
+create table employees(eid INT, fname VARCHAR(32), lname VARCHAR(32), city VARCHAR(32), esal INT, age INT, PRIMARY KEY(eid));
+
+insert into employees values
+(101,'Rahul','Gandhi','Wayanad',45000,52),
+(102,'Sonia','Gandhi','New Delhi',55000,75),
+(103,'Priyanka','Gandhi','Nodia',65000,45),
+(104,'Modi','Narendra','New Delhi',75000,69),
+(105,'Rajni','Kanth','Chennai',85000,65),
+(106,'Vijay','Setupathi','Chennai',95000,47),
+(107,'Nayana','Tara','Chennai',25000,40),
+(108,'Alia','Bhut','Mumbai',45000,31),
+(109,'Mahesh','Bhut','Mumbai',15000,68),
+(110,'Sonam','Kapoor','Mumbai',30000,27),
+(111,'Anil','Kapoor','Mumbai',38000,40),
+(112,'Raj','Kapoor','Mumbai',18000,78),
+(113,'Vishnu','Manchu','Hyderabad',10000,40),
+(114,'Manoj','Manchu','Hyderabad',12000,35);
+
+INSERT INTO employees (eid,fname,lname,city,age) values(115,'Mohan','Manchu','Hyderabad',70);
+
+1. Write a query to fetch employee whose last name is same.
+SELECT * FROM employees WHERE lname LIKE '%J';
+
+2. Write a query to fetch whose age is grater then 70.
+SELECT *FROM employees WHERE esal>70;
+
+3. Write a query to fetch employee with same city.
+SELECT COUNT(city) from employees;
+
+==========================================
+class6
+
+CREATE TABLE employee(eid int, ename varchar(32) NOT NULL, esal float CHECK(ESAL>15000), loc varchar(32) DEFAULT"Bangalore", PRIMARY KEY(eid,ename));
+
+CREATE TABLE bunit(b_id int, name varchar(32) NOT NULL, email varchar(32) NOT NULL, PRIMARY KEY(B_ID));
+INSERT INTO bunit VALUES(1001,'COLT','info@colt.com'),
+(1002,'CIPLA','info@cipla.com'),
+(1003,'AIRTEL_DM','info@airtel.com');
+
+CREATE TABLE employees(eid int, ename varchar(32) NOT NULL, esal float NOT NULL, gender varchar(32) NOT NULL, bu_id int, loc varchar(32) DEFAULT"Bangalore", PRIMARY KEY(eid),FOREIGN KEY(bu_id) REFERENCES bunit(b_id));
+
+INSERT INTO employees VALUES
+(101,'Rahul',45000.45,'Male',1002,'Wayanad'),
+(102,'Sonia',55000.45,'Female',1001,'Wayanad'),
+(103,'Priyanka',55000.45,'Female',1001,'New Delhi'),
+(104,'Modi',65000.45,'Male',1003,'Wayanad'),
+(105,'Amith',75000.45,'Male',1003,'New Delhi'),
+(106,'Rajni',85000.45,'Male',1003,'Wayanad'),
+(107,'Vijay',95000.45,'Male',1003,'New Delhi'),
+(108,'Roopa',45000.45,'Female',1001,'Wayanad'),
+(109,'Nandini',55000.45,'Female',1001,'New Delhi'),
+(1010,'Pooja',65000.45,'Female',1001,'Wayanad');
+
+SELECT e.ename as "Employee Name",
+e.esal as "Salary",
+b.Name as "Business Unit Name" 
+FROM employees e, bunit b 
+WHERE e.bu_id = b.b_id;
