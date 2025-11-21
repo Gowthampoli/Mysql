@@ -165,3 +165,19 @@ e.esal as "Salary",
 b.Name as "Business Unit Name" 
 FROM employees e, bunit b 
 WHERE e.bu_id = b.b_id;
+
+
+
+==========================================
+class6
+
+CREATE TABLE emp(eid int, 
+ename varchar(32) NOT NULL);
+
+DESC emp;
+
+ALTER TABLE emp add column esal int;
+ALTER TABLE emp MODIFY column esal float;
+ALTER TABLE emp DROP column esal;
+ALTER TABLE emp add PRIMARY KEY(eid);
+ALTER TABLE emp DROP PRIMARY KEY;
